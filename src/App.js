@@ -6,14 +6,34 @@ import Login from "./components/Login";
 import styled from "styled-components";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import { useEffect, useState } from "react";
+import db from "./data/Firebase";
+//import from firebase data after configuring;
+
 function App() {
+  const [rooms, setRooms] = useState([]);
+  const getChannels = () => {
+    db.collection("rooms").onSnapshot((snapshot) => {
+      setRooms(
+        snapshot.docs.map((doc) => {
+          return { id: doc.id, name: doc.data().name };
+        })
+      );
+    });
+  };
+
+  //example of getting daata from database;
+  useEffect(() => {
+    getChannels();
+  }, []);
+
   return (
     <div className="App">
       <Router>
         <Container>
           <Header />
           <Main>
-            <Sidebar />
+            <Sidebar rooms={rooms} />
             <Switch>
               <Route path="/">
                 <Chat />

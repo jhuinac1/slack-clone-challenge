@@ -18,7 +18,7 @@ function Header() {
         {/* name and image */}
         <Name>Johnny</Name>
         <UserImage>
-          <img src="https://i.imgur.com/6VBx3io.png" />
+          <img src="https://i.imgur.com/6VBx3io.png" alt="user-pic-profile" />
         </UserImage>
       </UserContainer>
     </Container>
@@ -29,7 +29,8 @@ export default Header;
 
 const Container = styled.div`
   // background: #350d36; //Original
-  background: #22223b; //Theme One (dark)
+  // background: #22223b; //Theme One (dark)
+  background: rgb(8, 15, 28); //Theme 2 dark mode
   color: white;
   display: flex;
   align-items: center;
@@ -47,7 +48,8 @@ const SearchContainer = styled.div`
 `;
 const Search = styled.div`
   width: 100%;
-  box-shadow: inset 0 0 0 1px rgb(104 74 104);
+  // box-shadow: inset 0 0 0 1px rgb(104 74 104); //original theme
+  box-shadow: inset 0 0 0 1px rgb(37, 64, 114); //Dark theme 2
   border-radius: 6px;
 
   input {

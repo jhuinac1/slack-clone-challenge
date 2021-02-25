@@ -2,8 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import AddIcon from "@material-ui/icons/Add";
-import { sidebarItemsData, sidebarChannelsList } from "../data/sidebarData";
-function Sidebar() {
+import { sidebarItemsData } from "../data/sidebarData";
+
+//firebase
+import db from "../data/Firebase";
+function Sidebar(props) {
+  const addChannel = () => {
+    const channelName = prompt("Enter channel name");
+    if (channelName) {
+      db.collection("rooms").add({
+        name: channelName,
+      });
+    }
+  };
+
   return (
     <Container className="dark-mode">
       <WorkSpaceContainer>
@@ -25,11 +37,11 @@ function Sidebar() {
       <ChannelsContainer>
         <NewChannelContainer>
           <div>Channels</div>
-          <AddIcon />
+          <AddIcon onClick={addChannel} />
         </NewChannelContainer>
         <ChannelsList>
-          {sidebarChannelsList.map((channel) => {
-            return <Channel key={channel.name}># {channel.name}</Channel>;
+          {props.rooms.map((channel) => {
+            return <Channel key={channel.id}># {channel.name}</Channel>;
           })}
         </ChannelsList>
       </ChannelsContainer>
@@ -48,8 +60,10 @@ export default Sidebar;
 
 const Container = styled.div`
   // background: #3f0e40; //Original theme
-  background: #22223b; //theme 1 Dark
+  // background: #22223b; //theme 1 Dark
+  background: rgb(8, 15, 28); //Theme 2 dark
   color: white;
+  border-right: 1px solid rgb(37, 64, 114);
 `;
 const WorkSpaceContainer = styled.div`
   height: 64px;
