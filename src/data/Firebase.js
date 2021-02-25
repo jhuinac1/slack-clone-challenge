@@ -5,10 +5,10 @@ require("dotenv").config();
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: "slack-clone-challenge-data.firebaseapp.com",
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
   projectId: "slack-clone-challenge-data",
-  storageBucket: "slack-clone-challenge-data.appspot.com",
-  messagingSenderId: "684919076491",
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKETS,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
 };
 
