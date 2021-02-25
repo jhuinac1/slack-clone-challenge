@@ -8,6 +8,7 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.3",
+    "dotenv": "^8.2.0",
     "emoji-picker-react": "^3.4.2",
     "firebase": "^8.2.9",
     "firebase-tools": "^9.5.0",
